@@ -36,6 +36,22 @@ namespace CalculatorExercise
             return result;
         }
 
+        public double Divide(double dividend, double divisor)
+        {
+            try
+            {
+                double result;
+                result = dividend / divisor;
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Division med 0");
+                return 0;
+
+            }
+        }
+
 
     }
 }

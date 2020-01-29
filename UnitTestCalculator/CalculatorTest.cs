@@ -45,6 +45,12 @@ namespace UnitTestCalculator
 
         }
 
+        [Test]
+        public void TestDivideByZero()
+        {
+            var ex = Assert.Catch<Exception>(()=>uut.Divide(5, 0));
+            StringAssert.Contains("Division med 0",ex.Message);
+        }
 
 
 
