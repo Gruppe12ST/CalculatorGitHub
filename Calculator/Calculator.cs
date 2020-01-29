@@ -8,34 +8,62 @@ namespace CalculatorExercise
 {
     public class Calculator
     {
+        public double Accumulator { get; private set; } = 0;
+
         public double Add(double a, double b)
         {
-            double result;
-            result = a + b;
-            return result;
+            try
+            {
+                Accumulator = a + b;
+                return Accumulator;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                Accumulator = Accumulator;
+                throw;
+            }
         }
 
         public double Substract(double a, double b)
         {
-            double result;
-            result = a - b;
-            return result;
+            try
+            {
+                Accumulator = a - b;
+                return Accumulator;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                Accumulator = Accumulator;
+                throw;
+            }
         }
 
         public double Multiply(double a, double b)
         {
-            double result;
-            result = a * b;
-            return result;
+            try
+            {
+                Accumulator = a * b;
+                return Accumulator;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                Accumulator = Accumulator;
+                throw;
+            }
         }
 
         public double Power(double x, double exp)
         {
-            double result;
-            result = Math.Pow(x, exp);
-            return result;
+            Accumulator = Math.Pow(x, exp);
+            return Accumulator;
         }
 
-
+        public void Clear()
+        {
+            Accumulator = 0;
+        }
     }
 }
