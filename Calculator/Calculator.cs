@@ -62,19 +62,17 @@ namespace CalculatorExercise
         }
 
 
-        public double Divide(double dividend, double divisor)
-        {
+        public double Divide(double dividend, double divisor)     
+        {                                                           
             try
             {
-                double result;
-                result = dividend / divisor;
-                return result;
+                decimal result;
+                result = (decimal)dividend / (decimal)divisor;              //OBS de to parametre er lavet om til decimal i stedet for double.
+                return (double) result;                                     //Dette skyldes at doubles ikke kaster en exception hvis man dividerer med 0. I stedet returneres infinity.
             }
             catch (Exception e)
             {
-                Console.WriteLine("Division med 0");
-                return 0;
-
+                throw new DivideByZeroException("Division med 0");
             }
         }
 
