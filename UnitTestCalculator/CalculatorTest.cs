@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using NUnit;
 using NUnit.Framework;
 using CalculatorExercise;
+using Calculator = CalculatorExercise.Calculator;
 
 namespace UnitTestCalculator
 {
@@ -62,6 +63,12 @@ namespace UnitTestCalculator
             StringAssert.Contains("Division med 0", ex.Message);
         }
 
+
+        [Test]
+        public void TestThatAddThrowsException()
+        {
+           
+        }
 
 
     }

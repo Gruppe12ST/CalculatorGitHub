@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Calculator;
 
 namespace CalculatorExercise
 {
@@ -17,11 +18,9 @@ namespace CalculatorExercise
                 Accumulator = a + b;
                 return Accumulator;
             }
-            catch (Exception e)
+            catch (AccumulatorException e)
             {
-                Console.WriteLine(e);
-                Accumulator = Accumulator;
-                throw;
+                throw new AccumulatorException(Accumulator);
             }
         }
 
@@ -32,11 +31,9 @@ namespace CalculatorExercise
                 Accumulator = a - b;
                 return Accumulator;
             }
-            catch (Exception e)
+            catch (AccumulatorException e)
             {
-                Console.WriteLine(e);
-                Accumulator = Accumulator;
-                throw;
+                throw new AccumulatorException(Accumulator);
             }
         }
 
@@ -47,18 +44,23 @@ namespace CalculatorExercise
                 Accumulator = a * b;
                 return Accumulator;
             }
-            catch (Exception e)
+            catch (AccumulatorException e)
             {
-                Console.WriteLine(e);
-                Accumulator = Accumulator;
-                throw;
+                throw new AccumulatorException(Accumulator);
             }
         }
 
         public double Power(double x, double exp)
         {
-            Accumulator = Math.Pow(x, exp);
-            return Accumulator;
+            try
+            {
+                Accumulator = Math.Pow(x, exp);
+                return Accumulator;
+            }
+            catch (AccumulatorException e)
+            {
+                throw new AccumulatorException(Accumulator);
+            }
         }
 
 
