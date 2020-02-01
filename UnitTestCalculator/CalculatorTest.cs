@@ -97,6 +97,17 @@ namespace UnitTestCalculator
             double result = a + accumulator;
             Assert.That(uut.Accumulator,Is.EqualTo(result));
         }
+        [TestCase(5.3, 5)]
+        [TestCase(-2.4, 5)]
+        [TestCase(7.34, -3)]
+        public void AddwithAccululatorReturnMethod(double a, double accumulator)
+        {
+            uut.Add(accumulator);
+            double svar =uut.Add(a);
+
+            double result = a + accumulator;
+            Assert.That(svar, Is.EqualTo(result));
+        }
 
         [Test]
         public void Subtrackt5fromAccumulator()
@@ -116,6 +127,17 @@ namespace UnitTestCalculator
 
             double result = accumulator-a;
             Assert.That(uut.Accumulator, Is.EqualTo(result));
+        }
+        [TestCase(5.3, 5)]
+        [TestCase(-2.4, 5)]
+        [TestCase(7.34, -3)]
+        public void SubtracktFromAccumulatorReturnMethod(double a, double accumulator)
+        {
+            uut.Add(accumulator);
+            double svar = uut.Substract(a);
+
+            double result = accumulator - a;
+            Assert.That(svar, Is.EqualTo(result));
         }
 
         [Test]
@@ -138,6 +160,18 @@ namespace UnitTestCalculator
             Assert.That(uut.Accumulator, Is.EqualTo(result));
         }
 
+        [TestCase(5.3, 5)]
+        [TestCase(-2.4, 5)]
+        [TestCase(7.34, -3)]
+        public void MultiplyWithAccumulatorReturnMethod(double a, double accumulator)
+        {
+            uut.Add(accumulator);
+            double svar = uut.Multiply(a);
+
+            double result = accumulator * a;
+            Assert.That(svar, Is.EqualTo(result));
+        }
+
         [Test]
         public void Power5WithAccumulator()
         {
@@ -158,6 +192,19 @@ namespace UnitTestCalculator
             Assert.That(uut.Accumulator, Is.EqualTo(result));
         }
 
+        [TestCase(5.3, 5)]
+        [TestCase(-2.4, 5)]
+        [TestCase(7.34, -3)]
+        public void PowerWithAccumulatorReturnMethod(double a, double accumulator)
+        {
+            uut.Add(accumulator);
+            double svar = uut.Power(a);
+
+            double result = Math.Pow(accumulator, a);
+            Assert.That(svar, Is.EqualTo(result));
+        }
+
+
         [Test]
         public void TestDivideByZeroAccumulator()
         {
@@ -176,6 +223,18 @@ namespace UnitTestCalculator
 
             double result = accumulator / a;
             Assert.That(uut.Accumulator, Is.EqualTo(result).Within(0.02));
+        }
+
+        [TestCase(5.3, 5)]
+        [TestCase(-2.4, 5)]
+        [TestCase(7.34, -3)]
+        public void DividWithAccumulatorReturnMethod(double a, double accumulator)
+        {
+            uut.Add(accumulator);
+            double svar = uut.Divide(a);
+
+            double result = accumulator / a;
+            Assert.That(svar, Is.EqualTo(result).Within(0.02));
         }
     }
 }
