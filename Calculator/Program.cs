@@ -11,10 +11,6 @@ namespace CalculatorExercise
         static void Main(string[] args)
         {
 
-
-
-
-
         }
     }
 }
