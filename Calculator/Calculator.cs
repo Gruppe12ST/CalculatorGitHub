@@ -83,5 +83,49 @@ namespace CalculatorExercise
             Accumulator = 0;
         }
 
+
+        public double Add(double addend)
+        {
+            Accumulator += addend;
+
+            return Accumulator;
+        }
+
+
+        public double Substract(double subtractor)
+        {
+            Accumulator = Accumulator - subtractor;
+            return Accumulator;
+        }
+
+
+        public double Multiply(double multiplier)
+        {
+            Accumulator = Accumulator * multiplier;
+            return Accumulator;
+        }
+
+        public double Power(double exponent)
+        {
+            Accumulator = Math.Pow(Accumulator, exponent);
+            return Accumulator;
+        }
+
+        public double Divide(double divisor)
+        {
+            try
+            {
+                decimal divid = ((decimal)Accumulator / (decimal)divisor);
+                Accumulator = Convert.ToDouble(divid);
+                return Accumulator;
+            }
+            catch (Exception e)
+            {
+                throw new DivideByZeroException("Division med 0");
+            }
+
+
+        }
+
     }
 }
