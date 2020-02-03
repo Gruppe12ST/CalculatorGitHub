@@ -74,10 +74,6 @@ namespace UnitTestCalculator
         }
 
 
-
-
-
-
         [Test]
         public void Add5andAccumulator()
         {
