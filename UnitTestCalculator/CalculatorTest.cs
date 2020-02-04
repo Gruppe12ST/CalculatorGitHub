@@ -67,7 +67,8 @@ namespace UnitTestCalculator
         [Test]
         public void TestThatAddThrowsException()
         {
-           
+            var exc = Assert.Catch<Exception>(() => uut.Add());
+
         }
 
 
