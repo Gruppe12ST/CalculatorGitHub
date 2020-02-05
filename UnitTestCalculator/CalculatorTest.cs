@@ -77,26 +77,24 @@ namespace UnitTestCalculator
             Assert.That(uut.Accumulator,Is.EqualTo(5));
         }
 
-        [TestCase(5.3,5)]
-        [TestCase(-2.4,5)]
-        [TestCase(7.34,-3)]
-        public void AddwithAccululator(double a,double accumulator)
+        [TestCase(5.3,5,10.3)]
+        [TestCase(-2.4,5,2.6)]
+        [TestCase(7.34,-3,4.34)]
+        public void AddwithAccululator(double a,double accumulator,double result)
         {
             uut.Add(accumulator);
             uut.Add(a);
 
-            double result = a + accumulator;
             Assert.That(uut.Accumulator,Is.EqualTo(result));
         }
-        [TestCase(5.3, 5)]
-        [TestCase(-2.4, 5)]
-        [TestCase(7.34, -3)]
-        public void AddwithAccululatorReturnMethod(double a, double accumulator)
+        [TestCase(5.3, 5,10.3)]
+        [TestCase(-2.4, 5,2.6)]
+        [TestCase(7.34, -3,4.34)]
+        public void AddwithAccululatorReturnMethod(double a, double accumulator,double result)
         {
             uut.Add(accumulator);
             double svar =uut.Add(a);
 
-            double result = a + accumulator;
             Assert.That(svar, Is.EqualTo(result));
         }
 
@@ -108,27 +106,26 @@ namespace UnitTestCalculator
             Assert.That(uut.Accumulator, Is.EqualTo(-5));
         }
 
-        [TestCase(5.3, 5)]
-        [TestCase(-2.4, 5)]
-        [TestCase(7.34, -3)]
-        public void SubtracktFromAccumulator(double a, double accumulator)
+        [TestCase(5.3, 5,-0.3)]
+        [TestCase(-2.4, 5,7.4)]
+        [TestCase(7.34, -3,-10.34)]
+        public void SubtracktFromAccumulator(double a, double accumulator,double result)
         {
             uut.Add(accumulator);
             uut.Substract(a);
 
-            double result = accumulator-a;
-            Assert.That(uut.Accumulator, Is.EqualTo(result));
+            Assert.That(uut.Accumulator, Is.EqualTo(result).Within(0.001));
         }
-        [TestCase(5.3, 5)]
-        [TestCase(-2.4, 5)]
-        [TestCase(7.34, -3)]
-        public void SubtracktFromAccumulatorReturnMethod(double a, double accumulator)
+
+        [TestCase(5.3, 5,-0.3)]
+        [TestCase(-2.4, 5,7.4)]
+        [TestCase(7.34, -3,-10.34)]
+        public void SubtracktFromAccumulatorReturnMethod(double a, double accumulator,double result)
         {
             uut.Add(accumulator);
             double svar = uut.Substract(a);
 
-            double result = accumulator - a;
-            Assert.That(svar, Is.EqualTo(result));
+            Assert.That(svar, Is.EqualTo(result).Within(0.001));
         }
 
         [Test]
@@ -139,27 +136,25 @@ namespace UnitTestCalculator
             Assert.That(uut.Accumulator, Is.EqualTo(0));
         }
 
-        [TestCase(5.3, 5)]
-        [TestCase(-2.4, 5)]
-        [TestCase(7.34, -3)]
-        public void MultiplyWithAccumulator(double a, double accumulator)
+        [TestCase(5.3, 5,26.5)]
+        [TestCase(-2.4, 5,-12)]
+        [TestCase(7.34, -3,-22.02)]
+        public void MultiplyWithAccumulator(double a, double accumulator,double result)
         {
             uut.Add(accumulator);
             uut.Multiply(a);
 
-            double result = accumulator * a;
             Assert.That(uut.Accumulator, Is.EqualTo(result));
         }
 
-        [TestCase(5.3, 5)]
-        [TestCase(-2.4, 5)]
-        [TestCase(7.34, -3)]
-        public void MultiplyWithAccumulatorReturnMethod(double a, double accumulator)
+        [TestCase(5.3, 5,26.5)]
+        [TestCase(-2.4, 5,-12)]
+        [TestCase(7.34, -3,-22.02)]
+        public void MultiplyWithAccumulatorReturnMethod(double a, double accumulator,double result)
         {
             uut.Add(accumulator);
             double svar = uut.Multiply(a);
 
-            double result = accumulator * a;
             Assert.That(svar, Is.EqualTo(result));
         }
 
@@ -171,28 +166,26 @@ namespace UnitTestCalculator
             Assert.That(uut.Accumulator, Is.EqualTo(0));
         }
 
-        [TestCase(5.3, 5)]
-        [TestCase(-2.4, 5)]
-        [TestCase(7.34, -3)]
-        public void PowerWithAccumulator(double a, double accumulator)
+        [TestCase(5.3, 5,5064.552)]
+        [TestCase(-2.4, 5,0.021)]
+        [TestCase(2, -3,9)]
+        public void PowerWithAccumulator(double a, double accumulator,double result)
         {
             uut.Add(accumulator);
             uut.Power(a);
 
-            double result = Math.Pow(accumulator,a);
-            Assert.That(uut.Accumulator, Is.EqualTo(result));
+            Assert.That(uut.Accumulator, Is.EqualTo(result).Within(0.005));
         }
 
-        [TestCase(5.3, 5)]
-        [TestCase(-2.4, 5)]
-        [TestCase(7.34, -3)]
-        public void PowerWithAccumulatorReturnMethod(double a, double accumulator)
+        [TestCase(5.3, 5,5064.552)]
+        [TestCase(-2.4, 5,0.021)]
+        [TestCase(2,-3,9)]
+        public void PowerWithAccumulatorReturnMethod(double a, double accumulator,double result)
         {
             uut.Add(accumulator);
             double svar = uut.Power(a);
 
-            double result = Math.Pow(accumulator, a);
-            Assert.That(svar, Is.EqualTo(result));
+            Assert.That(svar, Is.EqualTo(result).Within(0.005));
         }
 
 
@@ -204,27 +197,26 @@ namespace UnitTestCalculator
             StringAssert.Contains("Division med 0", ex.Message);
         }
 
-        [TestCase(5.3, 5)]
-        [TestCase(-2.4, 5)]
-        [TestCase(7.34, -3)]
-        public void DividWithAccumulator(double a, double accumulator)
+        [TestCase(5.3, 5,0.943)]
+        [TestCase(-2.4, 5,-2.083)]
+        [TestCase(7.34, -3,-0.409)]
+        public void DividWithAccumulator(double a, double accumulator,double result)
         {
             uut.Add(accumulator);
             uut.Divide(a);
 
-            double result = accumulator / a;
             Assert.That(uut.Accumulator, Is.EqualTo(result).Within(0.02));
         }
 
-        [TestCase(5.3, 5)]
-        [TestCase(-2.4, 5)]
-        [TestCase(7.34, -3)]
-        public void DividWithAccumulatorReturnMethod(double a, double accumulator)
+        [TestCase(5.3, 5,0.943)]
+        [TestCase(-2.4, 5, -2.083)]
+        [TestCase(7.34, -3, -0.409)]
+        public void DividWithAccumulatorReturnMethod(double a, double accumulator,double result)
         {
             uut.Add(accumulator);
             double svar = uut.Divide(a);
 
-            double result = accumulator / a;
+            
             Assert.That(svar, Is.EqualTo(result).Within(0.02));
         }
     }
