@@ -43,7 +43,7 @@ namespace CalculatorExercise
             try
             {
                 Accumulator = (double) ((decimal)dividend / (decimal)divisor);              //OBS de to parametre er lavet om til decimal i stedet for double.
-                return (double) Accumulator;                                     //Dette skyldes at doubles ikke kaster en exception hvis man dividerer med 0. I stedet returneres infinity.
+                return (double) Accumulator;                                                //Dette skyldes at doubles ikke kaster en exception hvis man dividerer med 0. I stedet returneres infinity.
             }
             catch (Exception e)
             {
