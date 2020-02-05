@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Calculator;
+using CalculatorExercise;
 
 namespace CalculatorExercise
 {
@@ -13,68 +13,41 @@ namespace CalculatorExercise
 
         public double Add(double a, double b)
         {
-            try
-            {
-                Accumulator = a + b;
-                return Accumulator;
-            }
-            catch (Exception e)
-            {
-                Accumulator = Accumulator;
-                throw new AccumulatorException(Accumulator);
-            }
+            Accumulator = a + b;
+            return Accumulator;
         }
 
         public double Substract(double a, double b)
         {
-            try
-            {
-                Accumulator = a - b;
-                return Accumulator;
-            }
-            catch (Exception e)
-            {
-                throw new AccumulatorException(Accumulator);
-            }
+           Accumulator = a - b;
+           return Accumulator;
         }
 
         public double Multiply(double a, double b)
         {
-            try
-            {
-                Accumulator = a * b;
-                return Accumulator;
-            }
-            catch (Exception e)
-            {
-                throw new AccumulatorException(Accumulator);
-            }
+           Accumulator = a * b;
+           return Accumulator;
         }
 
         public double Power(double x, double exp)
         {
-            try
-            {
-                Accumulator = Math.Pow(x, exp);
-                return Accumulator;
-            }
-            catch (Exception e)
-            {
-                throw new AccumulatorException(Accumulator);
-            }
+           Accumulator = Math.Pow(x, exp);
+           return Accumulator;
         }
 
 
         public double Divide(double dividend, double divisor)     
-        {                                                           
+        {
+            double result = Accumulator;
+
             try
             {
-                decimal result;
-                result = (decimal)dividend / (decimal)divisor;              //OBS de to parametre er lavet om til decimal i stedet for double.
-                return (double) result;                                     //Dette skyldes at doubles ikke kaster en exception hvis man dividerer med 0. I stedet returneres infinity.
+                Accumulator = (double) ((decimal)dividend / (decimal)divisor);              //OBS de to parametre er lavet om til decimal i stedet for double.
+                return (double) Accumulator;                                     //Dette skyldes at doubles ikke kaster en exception hvis man dividerer med 0. I stedet returneres infinity.
             }
             catch (Exception e)
             {
+                Accumulator = result;
                 throw new DivideByZeroException("Division med 0");
             }
         }
