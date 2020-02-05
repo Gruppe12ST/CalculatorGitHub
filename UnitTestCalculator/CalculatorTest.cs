@@ -23,40 +23,31 @@ namespace UnitTestCalculator
 
         }
 
-        [TestCase(3,5)]
-        [TestCase(-3, -5)]
-        [TestCase(2.7, 1.8)]
-        [TestCase(-1.5, 12.4)]
-        public void TestAdd(double a, double b)
+        [TestCase(3,5,8)]
+        [TestCase(-3, -5,-8)]
+        [TestCase(2.7, 1.8,4.5)]
+        [TestCase(-1.5, 12.4,10.9)]
+        public void TestAdd(double a, double b, double answer)
         {
-            //Arrange
-            double result = a + b;
-
             //Assert
-            Assert.That(uut.Add(a,b),Is.EqualTo(result));
+            Assert.That(uut.Add(a,b),Is.EqualTo(answer));
         }
 
-        [TestCase(2, 2)]
-        [TestCase(-2, 2)]
-        [TestCase(2,0)]
-        public void TestPower(double x, double exp)
+        [TestCase(2, 2,4)]
+        [TestCase(-2, 2,4)]
+        [TestCase(2,0,1)]
+        public void TestPower(double x, double exp, double answer)
         {
-            //Arrange 
-            double result = Math.Pow(x, exp);
-            
             //Assert
-            Assert.That(uut.Power(x,exp), Is.EqualTo(result));
-
+            Assert.That(uut.Power(x,exp), Is.EqualTo(answer));
         }
 
-        [TestCase(5, 2)]
-        [TestCase(-6, 2)]
-        [TestCase(-26, -4)]
-        public void TestDivide(double dividend, double divisor)
+        [TestCase(5, 2,2.5)]
+        [TestCase(-6, 2,-3)]
+        [TestCase(-26, -4,6.5)]
+        public void TestDivide(double dividend, double divisor, double answer)
         {
-            double result = dividend / divisor;
-            Assert.That(uut.Divide(dividend,divisor), Is.EqualTo(result));
-
+            Assert.That(uut.Divide(dividend,divisor), Is.EqualTo(answer));
         }
 
         [Test]
@@ -65,9 +56,6 @@ namespace UnitTestCalculator
             var ex = Assert.Catch<Exception>(() => uut.Divide(5, 0));
             StringAssert.Contains("Division med 0", ex.Message);
         }
-
-
-
 
         [Test]
         public void Add5andAccumulator()
@@ -88,6 +76,7 @@ namespace UnitTestCalculator
             double result = a + accumulator;
             Assert.That(uut.Accumulator,Is.EqualTo(result));
         }
+
         [TestCase(5.3, 5)]
         [TestCase(-2.4, 5)]
         [TestCase(7.34, -3)]
