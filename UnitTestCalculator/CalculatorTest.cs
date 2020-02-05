@@ -67,11 +67,11 @@ namespace UnitTestCalculator
         }
 
 
-        [Test]
-        public void TestThatAddThrowsException()
-        {
+        //[Test]
+        //public void TestThatAddThrowsException()
+        //{
            
-        }
+        //}
 
 
         [Test]
