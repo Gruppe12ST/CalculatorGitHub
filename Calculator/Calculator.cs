@@ -18,8 +18,9 @@ namespace CalculatorExercise
                 Accumulator = a + b;
                 return Accumulator;
             }
-            catch (AccumulatorException e)
+            catch (Exception e)
             {
+                Accumulator = Accumulator;
                 throw new AccumulatorException(Accumulator);
             }
         }
@@ -31,7 +32,7 @@ namespace CalculatorExercise
                 Accumulator = a - b;
                 return Accumulator;
             }
-            catch (AccumulatorException e)
+            catch (Exception e)
             {
                 throw new AccumulatorException(Accumulator);
             }
@@ -44,7 +45,7 @@ namespace CalculatorExercise
                 Accumulator = a * b;
                 return Accumulator;
             }
-            catch (AccumulatorException e)
+            catch (Exception e)
             {
                 throw new AccumulatorException(Accumulator);
             }
@@ -57,7 +58,7 @@ namespace CalculatorExercise
                 Accumulator = Math.Pow(x, exp);
                 return Accumulator;
             }
-            catch (AccumulatorException e)
+            catch (Exception e)
             {
                 throw new AccumulatorException(Accumulator);
             }
