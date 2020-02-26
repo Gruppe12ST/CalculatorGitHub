@@ -246,6 +246,14 @@ namespace UnitTestCalculator
             Assert.That(uut.Substract(a,b), Is.EqualTo(result));
         }
 
+        [TestCase(2, 6, 12)]
+        [TestCase(-6, -3, 18)]
+        [TestCase(6.3, 2.4, 15.12)]
+        public void Multiply(double a, double b, double result)
+        {
+            Assert.That(uut.Multiply(a, b), Is.EqualTo(result));
+        }
+
 
     }
 }
