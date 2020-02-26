@@ -238,7 +238,7 @@ namespace UnitTestCalculator
             Assert.That(uut.Accumulator, Is.EqualTo(0));
         }
 
-        [TestCase(2,6,4)]
+        [TestCase(2,6,-4)]
         [TestCase(-6,-3,-3)]
         [TestCase(6.3,2.4,3.9)]
         public void Substract(double a, double b, double result)
